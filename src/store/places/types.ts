@@ -1,0 +1,2 @@
+export const LOAD_PLACES = "LOAD_PLACES";
+export const LOAD_PLACES_SUCCESS = "LOAD_PLACES_SUCCESS";
