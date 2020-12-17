@@ -12,4 +12,4 @@ export const initialPlace: IPlace = {
     parts: undefined,
 };
 
-export default class User extends Record(initialPlace) {}
+export default class Place extends Record(initialPlace) {}

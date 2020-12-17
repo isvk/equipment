@@ -13,6 +13,6 @@ function* loadPlacesAsync(services: typeof bottle) {
     }
 }
 
-export default function* userSaga(services: typeof bottle) {
+export default function* placeSaga(services: typeof bottle) {
     yield takeEvery(types.LOAD_PLACES, loadPlacesAsync, services);
 }
