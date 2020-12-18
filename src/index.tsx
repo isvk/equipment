@@ -10,6 +10,7 @@ import rootSaga from "src/store/rootSaga";
 import services from "src/services";
 import App from "./App";
 
+import "typeface-roboto";
 import "reset-css";
 import "./index.css";
 
