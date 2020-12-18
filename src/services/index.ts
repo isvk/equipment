@@ -1,18 +1,18 @@
 import Bottle from "bottlejs";
 import Firebase from "./firebase";
-import ApiPlace from "src/services/api/apiPlace";
-import ApiInventory from "src/services/api/apiInventory";
+import ApiNode from "src/services/api/apiNode";
+import ApiItem from "src/services/api/apiItem";
 
 let bottle = new Bottle();
 
 export default bottle;
 bottle.service("Firebase", Firebase);
-bottle.service("ApiPlace", ApiPlace, "Firebase");
-bottle.service("ApiInventory", ApiInventory, "Firebase");
+bottle.service("ApiNode", ApiNode, "Firebase");
+bottle.service("ApiItem", ApiItem, "Firebase");
 
 declare module "bottlejs" {
     interface IContainer {
-        ApiPlace: ApiPlace;
-        ApiInventory: ApiInventory;
+        ApiNode: ApiNode;
+        ApiItem: ApiItem;
     }
 }

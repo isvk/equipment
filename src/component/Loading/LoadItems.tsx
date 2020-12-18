@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import useCustomDispatch from "src/hooks/useCustomDispatch";
 import useCustomSelector from "src/hooks/useCustomSelector";
-import { mainGetStatusLoadInventoriesAsync } from "src/store/rootSelector";
-import { loadInventories } from "src/store/inventory/actions";
+import { mainGetStatusLoadItemsAsync } from "src/store/rootSelector";
+import { loadItems } from "src/store/item/actions";
 import { loadStatus } from "src/store/loadStatus";
 import Alert from "src/component/Alert/Alert";
 
-export default function LoadInventories() {
+export default function LoadItems() {
     const dispatch = useCustomDispatch();
-    const statusAsync = useCustomSelector(mainGetStatusLoadInventoriesAsync);
+    const statusAsync = useCustomSelector(mainGetStatusLoadItemsAsync);
 
     useEffect(() => {
-        dispatch(loadInventories());
+        dispatch(loadItems());
     }, [dispatch]);
 
     if (statusAsync === loadStatus.load) {

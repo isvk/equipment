@@ -1,10 +1,10 @@
 import { all } from "redux-saga/effects";
 import Bottle from "bottlejs";
-import placeSaga from "src/store/places/saga";
-import inventorySaga from "src/store/inventory/saga";
+import nodeSaga from "src/store/nodes/saga";
+import itemSaga from "src/store/item/saga";
 
 export default (services: Bottle) => {
     return function* rootSaga() {
-        yield all([placeSaga(services), inventorySaga(services)]);
+        yield all([nodeSaga(services), itemSaga(services)]);
     };
 };

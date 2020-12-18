@@ -1,16 +1,16 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import styled from "styled-components";
-import ListEquipments from "src/component/ListEquipments/ListEquipments";
+import CatalogPage from "src/component/CatalogPage/CatalogPage";
 
 function App() {
     return (
         <Wrapper>
             <Switch>
                 <Route exact path="/">
-                    <Redirect to="/list_equipments" />
+                    <Redirect to="/catalog" />
                 </Route>
-                <Route exact path="/list_equipments" component={ListEquipments} />
+                <Route exact path="/catalog" component={CatalogPage} />
             </Switch>
         </Wrapper>
     );

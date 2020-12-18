@@ -2,13 +2,13 @@ import { Record } from "immutable";
 import { loadStatus } from "src/store/loadStatus";
 
 export interface IMain {
-    statusAsync: { loadPlaces: loadStatus; loadInventories: loadStatus };
+    statusAsync: { loadNodes: loadStatus; loadItems: loadStatus };
 }
 
 const initialMain: IMain = {
     statusAsync: {
-        loadPlaces: loadStatus.notLoaded,
-        loadInventories: loadStatus.notLoaded,
+        loadNodes: loadStatus.notLoaded,
+        loadItems: loadStatus.notLoaded,
     },
 };
 

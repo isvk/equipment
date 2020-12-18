@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import useCustomDispatch from "src/hooks/useCustomDispatch";
 import useCustomSelector from "src/hooks/useCustomSelector";
-import { mainGetStatusLoadPlacesAsync } from "src/store/rootSelector";
-import { loadPlaces } from "src/store/places/actions";
+import { mainGetStatusLoadNodesAsync } from "src/store/rootSelector";
+import { loadNodes } from "src/store/nodes/actions";
 import { loadStatus } from "src/store/loadStatus";
 import Alert from "src/component/Alert/Alert";
 
-export default function LoadPlaces() {
+export default function LoadNodes() {
     const dispatch = useCustomDispatch();
-    const statusAsync = useCustomSelector(mainGetStatusLoadPlacesAsync);
+    const statusAsync = useCustomSelector(mainGetStatusLoadNodesAsync);
 
     useEffect(() => {
-        dispatch(loadPlaces());
+        dispatch(loadNodes());
     }, [dispatch]);
 
     if (statusAsync === loadStatus.load) {
