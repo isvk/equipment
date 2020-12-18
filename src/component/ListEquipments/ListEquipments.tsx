@@ -1,15 +1,18 @@
-import React, { useEffect } from "react";
-import useCustomDispatch from "src/hooks/useCustomDispatch";
-import { loadPlaces } from "src/store/places/actions";
-import { loadInventories } from "src/store/inventory/actions";
+import React from "react";
+import useCustomSelector from "src/hooks/useCustomSelector";
+import { mainGetStatusAsync } from "src/store/rootSelector";
+import { loadStatus } from "src/store/loadStatus";
+import LoadPlaces from "src/component/Loading/LoadPlaces";
+import LoadInventories from "src/component/Loading/LoadInventories";
 
 export default function ListEquipments() {
-    const dispatch = useCustomDispatch();
+    const statusAsync = useCustomSelector(mainGetStatusAsync);
 
-    useEffect(() => {
-        dispatch(loadPlaces());
-        dispatch(loadInventories());
-    }, [dispatch]);
+    if (statusAsync.loadPlaces !== loadStatus.loaded) {
+        return <LoadPlaces />;
+    } else if (statusAsync.loadInventories !== loadStatus.loaded) {
+        return <LoadInventories />;
+    }
 
     return (
         <>
