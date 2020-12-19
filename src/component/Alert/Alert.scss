@@ -1,0 +1,27 @@
+.alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50% 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 2em;
+    color: #4a4a4a;
+
+    .preloadIcon {
+        color: #1e6798;
+
+        animation: rotate 2s linear infinite;
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    }
+
+    .warningIcon {
+        color: #ff0000;
+    }
+}
