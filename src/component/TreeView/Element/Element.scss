@@ -1,0 +1,42 @@
+.element {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    min-height: 3em;
+    cursor: pointer;
+    padding: 0 0.5em;
+    border-bottom: 1px solid var(--color-additional);
+
+    &.selected,
+    &:hover {
+        background-color: var(--color-secondary);
+
+        .selectedIcon {
+            display: block;
+        }
+    }
+
+    .selectedIcon {
+        display: none;
+        margin: 0 0.2em;
+    }
+
+    .descendantsIcon {
+        min-width: 1em;
+        min-height: 1em;
+        display: flex;
+        justify-content: center;
+        margin: 0 0.2em;
+    }
+
+    .name {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        margin: 0 0.2em;
+    }
+}
+
+.listDescendants {
+    padding-left: 0.5em;
+}

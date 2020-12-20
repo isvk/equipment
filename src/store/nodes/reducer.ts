@@ -14,6 +14,19 @@ const reducer = (state: TStoreNode = Map(), action: ActionTypesInfer<typeof acti
             });
             return state;
 
+        case types.SET_SELECTED_BY_IDS_REST_UNSELECTED:
+            state.forEach((node: Node) => {
+                let isSelected = action.ids.includes(node.id);
+
+                if (isSelected !== node.isSelected) {
+                    state = state.setIn([node.id, "isSelected"], isSelected);
+                }
+            });
+            return state;
+
+        case types.SET_SELECT_BY_ID:
+            return (state = state.setIn([action.id, "isSelected"], action.value));
+
         default:
             return state;
     }

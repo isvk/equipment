@@ -1,12 +1,14 @@
 import React from "react";
 import useCustomSelector from "src/hooks/useCustomSelector";
-import { mainGetStatusAsync } from "src/store/rootSelector";
+import { mainGetStatusAsync, nodesGetRootNodes } from "src/store/rootSelector";
 import { loadStatus } from "src/store/loadStatus";
 import LoadNodes from "src/component/Loading/LoadNodes";
 import LoadItems from "src/component/Loading/LoadItems";
+import TreeView from "src/component/TreeView/TreeView";
 
 export default function CatalogPage() {
     const statusAsync = useCustomSelector(mainGetStatusAsync);
+    const rootNodes = useCustomSelector(nodesGetRootNodes);
 
     if (statusAsync.loadNodes !== loadStatus.loaded) {
         return <LoadNodes />;
@@ -14,9 +16,5 @@ export default function CatalogPage() {
         return <LoadItems />;
     }
 
-    return (
-        <>
-            <h1>Список оборудования</h1>
-        </>
-    );
+    return <TreeView nodes={rootNodes} />;
 }

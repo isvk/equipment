@@ -6,7 +6,9 @@ type InferSelectorFunctionsTypes<T> = T extends { [key: string]: infer U } ? U :
 
 type InferredTypes = InferSelectorFunctionsTypes<typeof rootSelector>;
 
-export default function useCustomSelector<T extends InferredTypes>(selector: T, arg?: number | string) {
-    //@ts-ignore
+export default function useCustomSelector<T extends InferredTypes>(
+    selector: T,
+    arg?: number | string | number[] | string[]
+) {
     return useSelector((state: IStore) => selector(state, arg) as ReturnType<T>);
 }

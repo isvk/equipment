@@ -1,6 +1,7 @@
 import { createSelector } from "reselect";
 import { IStore } from "src/store/rootReducer";
 import { getStatusAsync, getStatusItemsAsync, getStatusNodesAsync } from "src/store/main/selectors";
+import Node from "src/models/node";
 
 const propsFirstSelector = (_: IStore, prop: any) => prop;
 
@@ -10,5 +11,17 @@ export const mainGetStatusLoadNodesAsync = createSelector(mainState, getStatusNo
 export const mainGetStatusLoadItemsAsync = createSelector(mainState, getStatusItemsAsync);
 
 export const nodeState = (state: Readonly<IStore>) => state.nodes;
+export const nodesGetNodesByIds = createSelector(nodeState, propsFirstSelector, (nodes, ids) => {
+    return nodes.filter((node) => (ids ? ids.includes(node.id) : false));
+});
+export const nodesGetRootNodes = createSelector(nodeState, (nodes) => {
+    const descendants = nodes.reduce((result: Node["id"][], node) => {
+        if (node.descendants) return result.concat(node.descendants);
+
+        return result;
+    }, []);
+
+    return nodes.filter((node) => !descendants.includes(node.id));
+});
 
 export const itemState = (state: Readonly<IStore>) => state.items;
