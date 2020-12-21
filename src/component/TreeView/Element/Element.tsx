@@ -4,6 +4,7 @@ import useCustomDispatch from "src/hooks/useCustomDispatch";
 import useCustomSelector from "src/hooks/useCustomSelector";
 import { nodesGetNodesByIds } from "src/store/rootSelector";
 import { setSelectById, setSelectedByIdsRestUnselected } from "src/store/nodes/actions";
+import AvailabilityItemsIcon from "./AvailabilityItemsIcon/AvailabilityItemsIcon";
 import ListElements from "../ListElements/ListElements";
 import { FaRegMinusSquare as OpenedDescendantsIcon } from "react-icons/fa";
 import { FaArrowRight as SelectedIcon } from "react-icons/fa";
@@ -31,6 +32,7 @@ export default function Element(props: IElementProps) {
             <div className={"element" + (props.node.isSelected ? " selected" : "")} onClick={handleSelected}>
                 <div className="descendantsIcon">{descendants.size > 0 && <OpenedDescendantsIcon />}</div>
                 <div className="name">{props.node.name}</div>
+                {props.node.isSelected && <AvailabilityItemsIcon nodeId={props.node.id} />}
                 <div className="selectedIcon">
                     <SelectedIcon />
                 </div>

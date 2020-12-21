@@ -1,0 +1,29 @@
+.listItems {
+    padding: 1em;
+
+    .items {
+        border: none;
+        thead {
+            td {
+                font-size: 0.8em;
+                background-color: #dddddd;
+                border-right: 5px solid #ffffff;
+            }
+        }
+        tbody {
+            color: #18538a;
+            tr {
+                border-bottom: 1px solid #dddddd;
+            }
+        }
+
+        td {
+            line-height: 3em;
+            padding: 0 1.5em;
+        }
+
+        .count {
+            text-align: right;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+@import "../../TreeView";
+
+$numberItemsSize: 0.8em;
+.numberItems {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    min-height: $numberItemsSize * 2;
+    min-width: $numberItemsSize;
+    padding: 0 $numberItemsSize / 2;
+    border-radius: $numberItemsSize;
+    font-size: $numberItemsSize;
+    background-color: $color-text;
+    color: $color-fon;
+    margin: 0 0.2em;
+}

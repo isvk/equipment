@@ -23,5 +23,16 @@ export const nodesGetRootNodes = createSelector(nodeState, (nodes) => {
 
     return nodes.filter((node) => !descendants.includes(node.id));
 });
+export const nodesGetSelectedNodes = createSelector(nodeState, (nodes) => {
+    return nodes.filter((node) => node.isSelected);
+});
 
 export const itemState = (state: Readonly<IStore>) => state.items;
+export const itemsGetNumberItemsByNodeId = createSelector(itemState, propsFirstSelector, (items, id: Node["id"]) => {
+    return items.filter((item) => (item.nodeId ? id === item.nodeId : false)).size;
+});
+export const itemsGetItemsForSelectedNodes = (state: Readonly<IStore>) => {
+    const nodeIds = state.nodes.filter((node) => node.isSelected).map((node) => node.id);
+
+    return state.items.filter((item) => (item.nodeId ? nodeIds.includes(item.nodeId) : false));
+};
