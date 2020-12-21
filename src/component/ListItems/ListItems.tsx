@@ -21,22 +21,20 @@ export default function ListItems(props: IListItemsProps) {
                             <td className="nodeName">Расположение</td>
                         </tr>
                     </thead>
-                    <tbody>
-                        {props.nodes.valueSeq().map((node) => (
-                            <>
-                                {props.items
-                                    .filter((item) => item.nodeId === node.id)
-                                    .valueSeq()
-                                    .map((item) => (
-                                        <tr className="item">
-                                            <td className="name">{item.name}</td>
-                                            <td className="count">{item.count}</td>
-                                            <td className="nodeName">{node.name}</td>
-                                        </tr>
-                                    ))}
-                            </>
-                        ))}
-                    </tbody>
+                    {props.nodes.valueSeq().map((node) => (
+                        <tbody key={node.id}>
+                            {props.items
+                                .filter((item) => item.nodeId === node.id)
+                                .valueSeq()
+                                .map((item) => (
+                                    <tr className="item" key={item.id}>
+                                        <td className="name">{item.name}</td>
+                                        <td className="count">{item.count}</td>
+                                        <td className="nodeName">{node.name}</td>
+                                    </tr>
+                                ))}
+                        </tbody>
+                    ))}
                 </table>
             )}
         </div>
