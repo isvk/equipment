@@ -1,9 +1,9 @@
 import React from "react";
-import Node from "src/models/node";
+import Node, { initialNode } from "src/models/node";
 import useCustomDispatch from "src/hooks/useCustomDispatch";
 import useCustomSelector from "src/hooks/useCustomSelector";
 import { nodesGetNodesByIds } from "src/store/rootSelector";
-import { setSelectById, setSelectedByIdsRestUnselected } from "src/store/nodes/actions";
+import { setSelectedByIdsRestUnselected } from "src/store/nodes/actions";
 import AvailabilityItemsIcon from "./AvailabilityItemsIcon/AvailabilityItemsIcon";
 import ListElements from "../ListElements/ListElements";
 import { FaRegMinusSquare as OpenedDescendantsIcon } from "react-icons/fa";
@@ -20,10 +20,10 @@ export default function Element(props: IElementProps) {
     const descendants = useCustomSelector(nodesGetNodesByIds, props.node.descendants);
 
     const handleSelected = () => {
-        if (props.node.isSelected) {
-            dispatch(setSelectById(props.node.id, false));
-        } else {
+        if (!props.node.isSelected || props.node.selectedByAncestorId !== initialNode.selectedByAncestorId) {
             dispatch(setSelectedByIdsRestUnselected([props.node.id]));
+        } else {
+            dispatch(setSelectedByIdsRestUnselected([]));
         }
     };
 
