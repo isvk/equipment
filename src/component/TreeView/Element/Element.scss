@@ -9,10 +9,6 @@
     &.selected,
     &:hover {
         background-color: var(--color-secondary);
-
-        .selectedIcon {
-            display: block;
-        }
     }
 
     .link {
@@ -21,11 +17,6 @@
         width: 100%;
         color: #fff;
         text-decoration: none;
-
-        .selectedIcon {
-            display: none;
-            margin: 0 0.2em;
-        }
 
         .descendantsIcon {
             min-width: 1em;

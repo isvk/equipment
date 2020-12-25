@@ -6,7 +6,6 @@ import { nodesGetNodesByIds } from "src/store/rootSelector";
 import AvailabilityItemsIcon from "./AvailabilityItemsIcon/AvailabilityItemsIcon";
 import ListElements from "../ListElements/ListElements";
 import { FaRegMinusSquare as OpenedDescendantsIcon } from "react-icons/fa";
-import { FaArrowRight as SelectedIcon } from "react-icons/fa";
 
 import "./Element.scss";
 
@@ -29,9 +28,6 @@ export default function Element(props: IElementProps) {
                 <Link to={nodeUrl} className="link">
                     <div className="name">{props.node.name}</div>
                     <AvailabilityItemsIcon nodeId={props.node.id} />
-                    <div className="selectedIcon">
-                        <SelectedIcon />
-                    </div>
                 </Link>
             </div>
 
