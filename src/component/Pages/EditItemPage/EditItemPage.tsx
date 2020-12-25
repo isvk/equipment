@@ -1,7 +1,12 @@
 import React from "react";
 import useCustomSelector from "src/hooks/useCustomSelector";
 import { useParams } from "react-router";
-import { mainGetStatusAsync, itemsGetItemById, nodesGetNodeById } from "src/store/rootSelector";
+import {
+    mainGetStatusAsync,
+    itemsGetItemById,
+    nodesGetNodeById,
+    nodesGetMainSelectedNode,
+} from "src/store/rootSelector";
 import { loadStatus } from "src/store/loadStatus";
 import { IEditItemUrl } from "src/App";
 import LoadNodes from "src/component/Loading/LoadNodes";
@@ -19,6 +24,7 @@ export default function EditItemPage() {
 
     const item = useCustomSelector(itemsGetItemById, itemId);
     const ancestorNode = useCustomSelector(nodesGetNodeById, item?.nodeId);
+    const mainSelectedNode = useCustomSelector(nodesGetMainSelectedNode);
 
     if (statusAsync.loadNodes !== loadStatus.loaded) {
         return <LoadNodes />;
@@ -27,7 +33,7 @@ export default function EditItemPage() {
     }
 
     if (item && ancestorNode) {
-        const links = [
+        let links = [
             {
                 url: "/catalog/node/" + ancestorNode.id,
                 label: (
@@ -38,6 +44,18 @@ export default function EditItemPage() {
                 ),
             },
         ];
+
+        if (mainSelectedNode && mainSelectedNode.id !== ancestorNode.id) {
+            links.unshift({
+                url: "/catalog/node/" + mainSelectedNode.id,
+                label: (
+                    <>
+                        <BackButtonIcon />
+                        Перейти в "{mainSelectedNode.name}"
+                    </>
+                ),
+            });
+        }
 
         return (
             <Catalog

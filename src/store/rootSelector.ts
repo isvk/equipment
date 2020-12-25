@@ -1,7 +1,7 @@
 import { createSelector } from "reselect";
 import { IStore } from "src/store/rootReducer";
 import { getStatusAsync, getStatusItemsAsync, getStatusNodesAsync } from "src/store/main/selectors";
-import Node, { getIdsAllDescendants } from "src/models/node";
+import Node, { getIdsAllDescendants, initialNode } from "src/models/node";
 import Item from "src/models/item";
 
 const propsFirstSelector = (_: IStore, prop: any) => prop;
@@ -30,6 +30,9 @@ export const nodesGetRootNodes = createSelector(nodeState, (nodes) => {
 export const nodesGetSelectedNodes = createSelector(nodeState, (nodes) => {
     return nodes.filter((node) => node.isSelected);
 });
+export const nodesGetMainSelectedNode = createSelector(nodesGetSelectedNodes, (nodes) =>
+    nodes.find((node) => node.selectedByAncestorId === initialNode.selectedByAncestorId)
+);
 
 export const itemState = (state: Readonly<IStore>) => state.items;
 export const itemsGetNumberItemsByNodeId = createSelector(
