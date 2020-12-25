@@ -1,9 +1,10 @@
 import { Record } from "immutable";
 import { loadStatus } from "src/store/loadStatus";
 import { saveStatus } from "src/store/saveStatus";
+import { deleteStatus } from "src/store/deleteStatus";
 
 export interface IMain {
-    statusAsync: { loadNodes: loadStatus; loadItems: loadStatus; saveItem: saveStatus };
+    statusAsync: { loadNodes: loadStatus; loadItems: loadStatus; saveItem: saveStatus; deleteItem: deleteStatus };
 }
 
 const initialMain: IMain = {
@@ -11,6 +12,7 @@ const initialMain: IMain = {
         loadNodes: loadStatus.notLoaded,
         loadItems: loadStatus.notLoaded,
         saveItem: saveStatus.notSaved,
+        deleteItem: deleteStatus.notDeleted,
     },
 };
 

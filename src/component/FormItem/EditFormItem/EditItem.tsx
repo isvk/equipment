@@ -1,6 +1,6 @@
 import React from "react";
 import useCustomDispatch from "src/hooks/useCustomDispatch";
-import { updateItem } from "src/store/item/actions";
+import { updateItem, deleteItem } from "src/store/item/actions";
 import Item from "src/models/item";
 import FormItem from "../FormItem";
 
@@ -15,5 +15,9 @@ export default function EditItem(props: IEditFormItemProps) {
         dispatch(updateItem(item.id, item));
     };
 
-    return <FormItem typeForm="edit" item={props.item} handleSave={handleSave} />;
+    const handleDelete = (id: Item["id"]) => {
+        dispatch(deleteItem(id));
+    };
+
+    return <FormItem typeForm="edit" item={props.item} handleSave={handleSave} handleDelete={handleDelete} />;
 }

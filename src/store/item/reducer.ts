@@ -18,6 +18,9 @@ const reducer = (state: TStoreItem = Map(), action: ActionTypesInfer<typeof acti
         case types.UPDATE_ITEM_SUCCESS:
             return state.set(action.item.id, action.item);
 
+        case types.DELETE_ITEM_SUCCESS:
+            return state.remove(action.id);
+
         default:
             return state;
     }

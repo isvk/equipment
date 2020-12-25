@@ -36,3 +36,15 @@ export const updateItemSuccess = (id: Item["id"], item: Item) =>
         type: types.UPDATE_ITEM_SUCCESS,
         item,
     } as const);
+
+export const deleteItem = (id: Item["id"]) =>
+    ({
+        type: types.DELETE_ITEM,
+        id,
+    } as const);
+
+export const deleteItemSuccess = (id: Item["id"]) =>
+    ({
+        type: types.DELETE_ITEM_SUCCESS,
+        id,
+    } as const);

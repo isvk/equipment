@@ -79,4 +79,8 @@ export default class ApiItem {
             throw new Error("Not found item");
         }
     };
+
+    deleteItem = (id: Item["id"]) => {
+        return this.firebase.delete(this.collection, id).then(() => true);
+    };
 }

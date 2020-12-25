@@ -8,6 +8,12 @@
         }
     }
 
-    .buttonSave {
+    .buttons {
+        display: flex;
+
+        .buttonSave,
+        .buttonDelete {
+            margin-right: 1em;
+        }
     }
 }

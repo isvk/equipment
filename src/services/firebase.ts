@@ -16,6 +16,8 @@ export default class Firebase implements IFirebase {
 
     getOne = (collection: string, id: string) => this.request(collection).doc(id).get();
 
+    delete = (collection: string, id: string) => this.request(collection).doc(id).delete();
+
     request = (collection: string) => this.firestore.collection(collection);
 }
 
