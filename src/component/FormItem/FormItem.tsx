@@ -58,7 +58,7 @@ export default function FormItem(props: IFromItemProps) {
                     {(statusAsync.saveItem === saveStatus.notSaved ||
                         statusAsync.saveItem === saveStatus.errorServer) && <NoSavedIcon />}
                     {statusAsync.saveItem === saveStatus.saved && <SaveIcon />}
-                    {statusAsync.saveItem === saveStatus.save && <PreloaderIcon />}
+                    {statusAsync.saveItem === saveStatus.save && <PreloaderIcon className="preloaderIcon" />}
                     {props.typeForm === "create" && "Добавить"}
                     {props.typeForm === "edit" && "Сохранить"}
                 </Button>
