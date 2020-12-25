@@ -1,29 +1,54 @@
 .listItems {
-    padding: 1em;
+    margin: 0.5em 0;
 
     .items {
         border: none;
-        thead {
-            td {
-                font-size: 0.8em;
-                background-color: #dddddd;
+        .head {
+            font-size: 0.8em;
+            background-color: #dddddd;
+
+            .cell {
+                line-height: 3em;
+                padding: 0 1em;
                 border-right: 5px solid #ffffff;
             }
         }
-        tbody {
-            color: #18538a;
-            tr {
-                border-bottom: 1px solid #dddddd;
+
+        .item {
+            color: var(--color-content);
+            line-height: 3em;
+            border-bottom: 1px solid #dddddd;
+            .cell {
+                padding: 0 1.5em;
+            }
+            .cell.name {
+                padding: 0;
+                a {
+                    display: block;
+                    width: 100%;
+                    padding: 0 1.5em;
+                    line-height: 3em;
+                    text-decoration: none;
+                    color: var(--color-content);
+                    border-left: 3px solid #ffffff;
+
+                    &:hover {
+                        border-left: 3px solid var(--color-content);
+                    }
+                }
+            }
+
+            .cell.count {
+                text-align: right;
+            }
+
+            .cell.nodeName {
             }
         }
-
-        td {
-            line-height: 3em;
-            padding: 0 1.5em;
-        }
-
-        .count {
-            text-align: right;
-        }
     }
+}
+
+.notFound {
+    margin: 1em 0;
+    font-size: 1.4em;
 }

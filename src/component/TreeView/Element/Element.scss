@@ -3,7 +3,6 @@
     align-items: center;
     text-decoration: none;
     min-height: 3em;
-    cursor: pointer;
     padding: 0 0.5em;
     border-bottom: 1px solid var(--color-additional);
 
@@ -16,24 +15,33 @@
         }
     }
 
-    .selectedIcon {
-        display: none;
-        margin: 0 0.2em;
-    }
-
-    .descendantsIcon {
-        min-width: 1em;
-        min-height: 1em;
+    .link {
         display: flex;
-        justify-content: center;
-        margin: 0 0.2em;
-    }
+        align-items: center;
+        width: 100%;
+        color: #fff;
+        text-decoration: none;
 
-    .name {
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        margin: 0 0.2em;
+        .selectedIcon {
+            display: none;
+            margin: 0 0.2em;
+        }
+
+        .descendantsIcon {
+            min-width: 1em;
+            min-height: 1em;
+            display: flex;
+            justify-content: center;
+            margin: 0 0.2em;
+        }
+
+        .name {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            line-height: 3em;
+            margin: 0 0.2em;
+        }
     }
 }
 

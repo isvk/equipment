@@ -1,17 +1,20 @@
 import React from "react";
-import { TStoreNode } from "src/store/nodes/reducer";
+import useCustomSelector from "src/hooks/useCustomSelector";
+import { nodesGetRootNodes } from "src/store/rootSelector";
 import ListElements from "./ListElements/ListElements";
 
 import "./TreeView.scss";
 
-interface ITreeViewProps {
-    nodes: TStoreNode;
-}
+export default function TreeView() {
+    const rootNodes = useCustomSelector(nodesGetRootNodes);
 
-export default function TreeView(props: ITreeViewProps) {
-    return (
-        <div className="treeView">
-            <ListElements nodes={props.nodes} />
-        </div>
-    );
+    if (rootNodes && rootNodes.size > 0) {
+        return (
+            <div className="treeView">
+                <ListElements nodes={rootNodes} />
+            </div>
+        );
+    }
+
+    return <></>;
 }

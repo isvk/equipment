@@ -1,9 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Node, { initialNode } from "src/models/node";
-import useCustomDispatch from "src/hooks/useCustomDispatch";
 import useCustomSelector from "src/hooks/useCustomSelector";
 import { nodesGetNodesByIds } from "src/store/rootSelector";
-import { setSelectedByIdsRestUnselected } from "src/store/nodes/actions";
 import AvailabilityItemsIcon from "./AvailabilityItemsIcon/AvailabilityItemsIcon";
 import ListElements from "../ListElements/ListElements";
 import { FaRegMinusSquare as OpenedDescendantsIcon } from "react-icons/fa";
@@ -16,26 +15,24 @@ interface IElementProps {
 }
 
 export default function Element(props: IElementProps) {
-    const dispatch = useCustomDispatch();
     const descendants = useCustomSelector(nodesGetNodesByIds, props.node.descendants);
 
-    const handleSelected = () => {
-        if (!props.node.isSelected || props.node.selectedByAncestorId !== initialNode.selectedByAncestorId) {
-            dispatch(setSelectedByIdsRestUnselected([props.node.id]));
-        } else {
-            dispatch(setSelectedByIdsRestUnselected([]));
-        }
-    };
+    const nodeUrl =
+        !props.node.isSelected || props.node.selectedByAncestorId !== initialNode.selectedByAncestorId
+            ? "/catalog/node/" + props.node.id
+            : "/catalog/";
 
     return (
         <div>
-            <div className={"element" + (props.node.isSelected ? " selected" : "")} onClick={handleSelected}>
+            <div className={"element" + (props.node.isSelected ? " selected" : "")}>
                 <div className="descendantsIcon">{descendants.size > 0 && <OpenedDescendantsIcon />}</div>
-                <div className="name">{props.node.name}</div>
-                {props.node.isSelected && <AvailabilityItemsIcon nodeId={props.node.id} />}
-                <div className="selectedIcon">
-                    <SelectedIcon />
-                </div>
+                <Link to={nodeUrl} className="link">
+                    <div className="name">{props.node.name}</div>
+                    {props.node.isSelected && <AvailabilityItemsIcon nodeId={props.node.id} />}
+                    <div className="selectedIcon">
+                        <SelectedIcon />
+                    </div>
+                </Link>
             </div>
 
             {descendants.size > 0 && (

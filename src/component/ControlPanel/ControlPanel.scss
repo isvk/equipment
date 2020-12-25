@@ -1,0 +1,21 @@
+.controlPanel {
+    margin-left: 5px;
+    background-color: var(--color-primary);
+
+    a {
+        display: inline-block;
+        line-height: 2.5em;
+        text-decoration: none;
+        padding: 0 1em;
+        color: #ffffff;
+        background-color: var(--color-additional);
+
+        svg {
+            padding-right: 0.5em;
+        }
+
+        &:hover {
+            background-color: var(--color-secondary);
+        }
+    }
+}

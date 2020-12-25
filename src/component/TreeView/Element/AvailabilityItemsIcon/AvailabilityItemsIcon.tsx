@@ -13,7 +13,7 @@ export default function AvailabilityItemsIcon(props: IIconNumberItemsProps) {
     const numberItems = useCustomSelector(itemsGetNumberItemsByNodeId, props.nodeId);
 
     if (numberItems > 0) {
-        return <div className="numberItems">{numberItems}</div>;
+        return <div className="availabilityItemsIcon">{numberItems}</div>;
     }
 
     return <></>;

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { TStoreNode } from "src/store/nodes/reducer";
 import { TStoreItem } from "src/store/item/reducer";
 
@@ -10,15 +11,15 @@ interface IListItemsProps {
 }
 
 export default function ListItems(props: IListItemsProps) {
-    return (
-        <div className="listItems">
-            {props.items.size > 0 && (
+    if (props.nodes && props.items && props.nodes.size > 0 && props.items.size > 0) {
+        return (
+            <div className="listItems">
                 <table className="items">
                     <thead>
-                        <tr>
-                            <td className="name">Название оборудования</td>
-                            <td className="count">Количество</td>
-                            <td className="nodeName">Расположение</td>
+                        <tr className="head">
+                            <td className="cell name">Название оборудования</td>
+                            <td className="cell count">Количество</td>
+                            <td className="cell nodeName">Расположение</td>
                         </tr>
                     </thead>
                     {props.nodes.valueSeq().map((node) => (
@@ -28,15 +29,19 @@ export default function ListItems(props: IListItemsProps) {
                                 .valueSeq()
                                 .map((item) => (
                                     <tr className="item" key={item.id}>
-                                        <td className="name">{item.name}</td>
-                                        <td className="count">{item.count}</td>
-                                        <td className="nodeName">{node.name}</td>
+                                        <td className="cell name">
+                                            <Link to={"/catalog/item/" + item.id}>{item.name}</Link>
+                                        </td>
+                                        <td className="cell count">{item.count}</td>
+                                        <td className="cell nodeName">{node.name}</td>
                                     </tr>
                                 ))}
                         </tbody>
                     ))}
                 </table>
-            )}
-        </div>
-    );
+            </div>
+        );
+    }
+
+    return <div className="notFound">Оборудования нет</div>;
 }

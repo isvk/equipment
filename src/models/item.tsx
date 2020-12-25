@@ -11,7 +11,7 @@ export interface IItem {
 export const initialItem: IItem = {
     id: "",
     name: "",
-    count: 0,
+    count: 1,
     nodeId: "",
 };
 

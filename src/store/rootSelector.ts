@@ -2,6 +2,7 @@ import { createSelector } from "reselect";
 import { IStore } from "src/store/rootReducer";
 import { getStatusAsync, getStatusItemsAsync, getStatusNodesAsync } from "src/store/main/selectors";
 import Node from "src/models/node";
+import Item from "src/models/item";
 
 const propsFirstSelector = (_: IStore, prop: any) => prop;
 
@@ -11,6 +12,9 @@ export const mainGetStatusLoadNodesAsync = createSelector(mainState, getStatusNo
 export const mainGetStatusLoadItemsAsync = createSelector(mainState, getStatusItemsAsync);
 
 export const nodeState = (state: Readonly<IStore>) => state.nodes;
+export const nodesGetNodeById = createSelector(nodeState, propsFirstSelector, (nodes, id) => {
+    return nodes.find((node) => node.id === id);
+});
 export const nodesGetNodesByIds = createSelector(nodeState, propsFirstSelector, (nodes, ids) => {
     return nodes.filter((node) => (ids ? ids.includes(node.id) : false));
 });
@@ -31,8 +35,14 @@ export const itemState = (state: Readonly<IStore>) => state.items;
 export const itemsGetNumberItemsByNodeId = createSelector(itemState, propsFirstSelector, (items, id: Node["id"]) => {
     return items.filter((item) => (item.nodeId ? id === item.nodeId : false)).size;
 });
+export const itemsGetItemsByNodeIds = createSelector(itemState, propsFirstSelector, (items, ids: Node["id"][]) => {
+    return items.filter((item) => (item.nodeId ? ids.includes(item.nodeId) : false));
+});
 export const itemsGetItemsForSelectedNodes = (state: Readonly<IStore>) => {
     const nodeIds = state.nodes.filter((node) => node.isSelected).map((node) => node.id);
 
     return state.items.filter((item) => (item.nodeId ? nodeIds.includes(item.nodeId) : false));
 };
+export const itemsGetItemById = createSelector(itemState, propsFirstSelector, (items, id: Item["id"]) => {
+    return items.find((item) => item.id === id);
+});
