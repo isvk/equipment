@@ -28,7 +28,7 @@ export default function Element(props: IElementProps) {
                 <div className="descendantsIcon">{descendants.size > 0 && <OpenedDescendantsIcon />}</div>
                 <Link to={nodeUrl} className="link">
                     <div className="name">{props.node.name}</div>
-                    {props.node.isSelected && <AvailabilityItemsIcon nodeId={props.node.id} />}
+                    <AvailabilityItemsIcon nodeId={props.node.id} />
                     <div className="selectedIcon">
                         <SelectedIcon />
                     </div>
