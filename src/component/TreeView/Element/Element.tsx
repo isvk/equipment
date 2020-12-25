@@ -5,7 +5,7 @@ import useCustomSelector from "src/hooks/useCustomSelector";
 import { nodesGetNodesByIds } from "src/store/rootSelector";
 import AvailabilityItemsIcon from "./AvailabilityItemsIcon/AvailabilityItemsIcon";
 import ListElements from "../ListElements/ListElements";
-import { FaRegMinusSquare as OpenedDescendantsIcon } from "react-icons/fa";
+import { FaSortDown as OpenedDescendantsIcon } from "react-icons/fa";
 
 import "./Element.scss";
 
