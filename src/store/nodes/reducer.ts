@@ -46,10 +46,6 @@ const reducer = (state: TStoreNode = Map(), action: ActionTypesInfer<typeof acti
 
             return state;
 
-        //possibly deprecated
-        case types.SET_SELECT_BY_ID:
-            return (state = state.setIn([action.id, "isSelected"], action.value));
-
         default:
             return state;
     }
