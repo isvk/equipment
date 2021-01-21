@@ -1,16 +1,41 @@
-## Environment Variables:
+# Инвентаризация оборудования
 
-```
-REACT_APP_API_KEY=
-REACT_APP_AUTH_DOMAIN=
-REACT_APP_DATABASE_URL=
-REACT_APP_PROJECT_ID=
-REACT_APP_STORAGE_BUCKET=
-REACT_APP_MESSAGING_SENDER_ID=
-REACT_APP_APP_ID=
-```
+## [Демо](https://isvk.github.io/equipment/build/)
 
-## Available Scripts
+## Реализованный функционал
+
+* TreeView для зданий, корпусов и помещений
+* CRUD для оборудования
+* Взаимодействие с Firebase выделено в отдельную прослойку
+
+## Стек
+
+* React
+* Hooks
+* Redux
+* Saga
+* Reselect
+* Immutable.js
+* React Router
+* SCSS
+* Firebase
+
+## Back-End
+
+Cloud Firestore REST API
+
+## Install
+
+### Environment Variables:
+```
+REACT_APP_API_KEY=AIzaSyBahS7jXhxcnjPhds-Qh9RLQsH7MLiZ-Dw
+REACT_APP_AUTH_DOMAIN=treeview-catalog.firebaseapp.com
+REACT_APP_DATABASE_URL=https://treeview-catalog-default-rtdb.europe-west1.firebasedatabase.app
+REACT_APP_PROJECT_ID=treeview-catalog
+REACT_APP_STORAGE_BUCKET=treeview-catalog.appspot.com
+REACT_APP_MESSAGING_SENDER_ID=265159864205
+REACT_APP_APP_ID=1:265159864205:web:1c319bea13dfb7f51617c4
+```
 
 In the project directory, you can run:
 
